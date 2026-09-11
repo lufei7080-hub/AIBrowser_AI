@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply h-full w-full overflow-hidden bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  #root {
+    @apply flex h-full min-h-0 w-full flex-col;
+  }
+}
+
+@layer components {
+  /* ---- 按钮四级体系：primary / secondary(outline) / ghost / danger ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-colors;
+    @apply hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-1;
+    @apply disabled:cursor-not-allowed disabled:border-border disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted;
+  }
+
+  .btn-primary {
+    @apply border-primary bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply disabled:border-border disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted;
+  }
+
+  .btn-danger {
+    @apply border-destructive/20 bg-destructive/10 text-destructive hover:bg-destructive/15;
+    @apply disabled:border-border disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted;
+  }
+
+  .btn-outline {
+    @apply border-border bg-transparent hover:bg-secondary;
+    @apply disabled:border-border disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted;
+  }
+
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-muted-foreground shadow-none hover:bg-secondary hover:text-foreground;
+  }
+
+  .btn-icon-danger {
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-md border border-transparent text-muted-foreground/50 transition-colors hover:bg-destructive/10 hover:text-destructive;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30;
+  }
+
+  .btn-compact {
+    @apply gap-1 px-2 py-1 text-[11px];
+  }
+
+  .btn-compact-icon {
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-md border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-secondary hover:text-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30;
+  }
+
+  /* ---- 图标按钮（顶栏/面板通用） ---- */
+  .icon-button {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-secondary hover:text-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30;
+  }
+
+  /* ---- 开关 ---- */
+  .ui-switch {
+    @apply relative inline-flex h-4 w-7 shrink-0 cursor-pointer rounded-full transition-colors;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30;
+  }
+
+  .ui-switch-knob {
+    @apply absolute top-0.5 h-3 w-3 rounded-full bg-background shadow transition-transform;
+  }
+
+  /* ---- Tab ---- */
+  .tab-rail {
+    @apply flex gap-0 border-b border-border px-3;
+  }
+
+  .tab-item {
+    @apply relative flex flex-1 items-center justify-center gap-1 border-b-2 border-transparent px-1.5 py-2.5 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30;
+  }
+
+  .tab-item-active {
+    @apply border-primary text-primary;
+  }
+
+  /* ---- 上下文徽章 ---- */
+  .context-badge {
+    @apply inline-flex max-w-full items-center gap-1.5 rounded-md border border-primary/15 bg-primary/10 px-2 py-1 text-[11px] font-semibold text-foreground;
+  }
+
+  /* ---- 弹层 ---- */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-[1px];
+  }
+
+  .modal-overlay-elevated {
+    @apply z-[60];
+  }
+
+  .modal-panel {
+    @apply max-h-[90vh] w-full overflow-auto rounded-lg border border-border bg-card shadow-panel;
+  }
+
+  /* ---- 表单 ---- */
+  .field-label {
+    @apply flex flex-col gap-1.5 text-xs font-medium text-foreground;
+  }
+
+  .field-input {
+    @apply rounded-md border border-border bg-background px-3 py-2 text-sm font-normal outline-none ring-primary/20 focus:ring-2;
+    @apply focus-visible:outline-none;
+  }
+
+  /* ---- 勾选框 ---- */
+  .checkbox {
+    @apply inline-flex h-4 w-4 items-center justify-center rounded border border-border bg-card text-primary transition-colors;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30;
+  }
+
+  .checkbox-checked {
+    @apply border-primary bg-primary text-primary-foreground;
+  }
+
+  /* ---- 状态点 ---- */
+  .status-dot {
+    @apply h-2 w-2 rounded-full bg-muted-foreground/40;
+  }
+
+  .status-running {
+    @apply bg-success shadow-[0_0_0_3px_rgba(34,197,94,0.15)];
+  }
+
+  .status-stopped {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* ---- 风控评分徽章 ---- */
+  .score-badge {
+    @apply inline-flex min-w-[3rem] items-center justify-center rounded-full border px-2 py-0.5 font-mono text-[11px] font-semibold;
+  }
+
+  .score-good {
+    @apply border-success/20 bg-success/10 text-success;
+  }
+
+  .score-warn {
+    @apply border-warning/25 bg-warning/10 text-warning;
+  }
+
+  .score-bad {
+    @apply border-destructive/20 bg-destructive/10 text-destructive;
+  }
+
+  .score-neutral {
+    @apply border-border bg-secondary text-muted-foreground;
+  }
+
+  /* ---- 可关闭横幅（顶栏下方） ---- */
+  .banner {
+    @apply flex min-h-[40px] items-center justify-between gap-3 border-b border-destructive/20 bg-destructive/10 px-5 py-2 text-xs text-destructive;
+  }
+}

@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+sidecar/node_modules/
+
+# Build outputs
+dist/
+sidecar/dist/
+src-tauri/target/
+release-dist/
+*.tsbuildinfo
+
+# Tauri / WebView2 runtime blobs
+src-tauri/WebView2/*.exe
+src-tauri/WebView2/*.dll
+src-tauri/WebView2/*.pak
+src-tauri/WebView2/*.dat
+src-tauri/WebView2/Locales/
+
+# Local workflow notes (do not publish)
+# 修改流程/
+
+# Secrets / local env
+.env
+.env.*
+*.local
+*.tsk
+*.rar
+__pycache__/
+
+# OS / editor / IDE
+.DS_Store
+Thumbs.db
+.cursor/
+.cursorrules-v2.md
+*.log
+
+# Binaries (keep icons)
+*.exe
+!src-tauri/icons/*.ico
+
+# Local CloakBrowser / Chromium unpack trees (not source)
+Browse/
+Browse/**
+
+# Upstream browser-use reference clone (local mirror only; not runtime)
+_ref_browser_use/
+
+# Third-party extension unpack dirs
+extensions/twp/
+extensions/immersive-translate/
+
+# Agent / temp assets
+agent-transcripts/
+assets/
+
+# Sidecar runtime artifacts (debug logs / control memory LRU)
+sidecar/logs/
+sidecar/agent_exports/control_memory/
+
+# Keygen local build outputs
+tools/**/build/
+tools/**/dist/*.exe
+tools/**/dist/*.rar
+tools/**/*.egg-info/
+

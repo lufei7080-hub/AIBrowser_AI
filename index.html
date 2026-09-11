@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>天枢台</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #ffffff;
+        color: #0f172a;
+        font-family: Inter, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      #root {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .initial-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .initial-loader__brand {
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #0f172a;
+      }
+
+      .initial-loader__spinner {
+        width: 34px;
+        height: 34px;
+        border: 2px solid rgba(99, 102, 241, 0.18);
+        border-top-color: #6366f1;
+        border-radius: 50%;
+        animation: cloakforge-spin 0.75s linear infinite;
+      }
+
+      .initial-loader__hint {
+        font-size: 11px;
+        color: #64748b;
+        letter-spacing: 0.02em;
+      }
+
+      .initial-loader__skeleton {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: min(280px, 72vw);
+        margin-top: 6px;
+      }
+
+      .initial-loader__bar {
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+        background-size: 200% 100%;
+        animation: cloakforge-shimmer 1.4s ease-in-out infinite;
+      }
+
+      .initial-loader__bar:nth-child(2) {
+        width: 82%;
+        animation-delay: 0.12s;
+      }
+
+      .initial-loader__bar:nth-child(3) {
+        width: 64%;
+        animation-delay: 0.24s;
+      }
+
+      @keyframes cloakforge-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes cloakforge-shimmer {
+        0% {
+          background-position: 100% 0;
+        }
+        100% {
+          background-position: -100% 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="initial-loader" role="status" aria-live="polite" aria-label="天枢台 正在加载">
+        <div class="initial-loader__brand">天枢台</div>
+        <div class="initial-loader__spinner" aria-hidden="true"></div>
+        <div class="initial-loader__hint">正在加载本地控制台…</div>
+        <div class="initial-loader__skeleton" aria-hidden="true">
+          <div class="initial-loader__bar"></div>
+          <div class="initial-loader__bar"></div>
+          <div class="initial-loader__bar"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
